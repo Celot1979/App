@@ -44,3 +44,37 @@ def crear(nombre,apellidos,contraseña,direccion,l6):
     except:
         messagebox.showinfo("ADVERTENCIA", "Ocurrió un error al crear el registro, verifique la conexión")
     limpiar_campos(nombre,apellidos,contraseña,direccion,l6)
+
+def leer(id,nombre,apellidos,contraseña,direccion,l6):
+    miConexion = sqlite3.connect('Datos.db')
+    miCursor = miConexion.cursor()
+    miCursor.execute("SELECT * FROM formulario WHERE ID =" + id.get())
+    elUsuario = miCursor.fetchall()#Lista lo que está en la BBDD
+
+    for usuario in elUsuario:
+        id.set(usuario[0])
+        nombre.set(usuario[1])
+        apellidos.set(usuario[2])
+        contraseña.set(usuario[3])
+        direccion.set(usuario[4])
+        l6.insert(1.0,usuario[5])
+    miConexion.commit()
+
+def actualizar(id,nombre,apellidos,contraseña,direccion,l6):
+    miConexion = sqlite3.connect('Datos.db')
+    miCursor = miConexion.cursor()
+    miCursor.execute("UPDATE formulario SET NOMBRE='" + nombre.get() +
+        "', APELLIDOS = '" + apellidos.get() +
+        "', CONTRASEÑA =  '" + contraseña.get() +
+        "', DIRECCION =  '" + direccion.get() +    
+        "', COMENTARIO = '" + l6.get("1.0",END) +
+        "' WHERE ID=" + id.get())
+    miConexion.commit()
+    messagebox.showinfo("BBDD","Registro Actualizado")
+
+def borrar(id):
+        miConexion = sqlite3.connect('Datos.db')
+        miCursor = miConexion.cursor()
+        miCursor.execute("DELETE FROM formulario WHERE ID =" + id.get())
+        miConexion.commit()
+        messagebox.showinfo("BBDD","Registro Borrado")
