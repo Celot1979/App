@@ -4,12 +4,13 @@ from tkinter import messagebox
 def salir(root):
     root.destroy()
 
-def limpiar_campos(nombre,apellidos,contraseña,direccion,comentarios):
+def limpiar_campos(nombre,apellidos,contraseña,direccion,l6):
     nombre.set('')
     apellidos.set('')
     contraseña.set('')
     direccion.set('')
-    comentarios.set('')
+    l6.delete(1.0, "end-1c")
+    
 
 def lincencia():
     messagebox.showinfo("LICENCIA", "PROGRAMA CREADO CON PYTHON Y TKINTER(By Daniel Gil). Para cualquier duda visitar la documentación")

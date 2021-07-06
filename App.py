@@ -42,7 +42,7 @@ nombre =StringVar()
 apellidos =StringVar()
 contraseña =StringVar()
 direccion =StringVar()
-comentarios =StringVar()
+#comentarios =StringVar()
 
 #Caja de textos
 l1= Entry(lamina, textvariable= id)
@@ -54,18 +54,27 @@ l2.grid(row=2,column=2)
 l3= Entry(lamina, textvariable= apellidos)
 l3.grid(row=3,column=2)
 
-l4= Entry(lamina, textvariable= contraseña)
+l4= Entry(lamina, textvariable= contraseña, show= "*")
 l4.grid(row=4,column=2)
 
 l5= Entry(lamina, textvariable= direccion)
 l5.grid(row=5,column=2)
 
-l6= Entry(lamina, textvariable= comentarios)
-l6.grid(row=6,column=2,padx=10,pady=10,ipady=30)
+"""l6= Entry(lamina, textvariable= comentarios)
+l6.grid(row=6,column=2,padx=10,pady=10,ipady=30)"""
+
+l6= Text(lamina,width = 25,height =10)
+l6.grid(row=6,column=2)
+miscroll=Scrollbar(lamina, command= l6.yview)
+miscroll.grid(row=6,column=3,stick="nsew")
+l6.config(yscrollcommand=miscroll.set)
+def info(l6):
+    informacion_comentario = l6.get(1.0, "end-1c")
+    print(informacion_comentario)
 
 
 #Botones
-b1= Button(lamina,text="Create",command= lambda: crear(nombre,apellidos,contraseña,direccion,comentarios))
+b1= Button(lamina,text="Create",command= lambda: crear(nombre,apellidos,contraseña,direccion,l6))
 b1.grid(row=7,column=1)
 
 b2= Button(lamina,text="Read")
@@ -94,12 +103,18 @@ menubar.add_cascade(label="Ayuda", menu = helpmenu)
 
 #Añadimos los comandos de cada submenú
 BBDDmenu.add_command(label="CREAR BBDD", command =conexionBBDD)
+BBDDmenu.add_command(label="Borrar Tabla de BBDD ", command= eliminar_Tabla)
 BBDDmenu.add_command(label="SALIR", command = lambda: salir(root))
+
 
 CRUDmenu.add_command(label="CREATE",command= lambda: crear(nombre,apellidos,contraseña,direccion,comentarios))
 CRUDmenu.add_command(label="READ")
 CRUDmenu.add_command(label="UPDATE")
 CRUDmenu.add_command(label="DELATE")
+
+
+Borrarmenu.add_command(label="Borrar campos de texto",command= lambda: limpiar_campos(nombre,apellidos,contraseña,direccion,comentarios))
+
 
 helpmenu.add_command(label="AYUDA DE", command = acerca)
 helpmenu.add_command(label="LINCENCIA", command = lincencia)

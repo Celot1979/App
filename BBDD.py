@@ -1,6 +1,7 @@
 import sqlite3
 from tkinter import messagebox
 from tools import *
+
 def conexionBBDD():
     miConexion = sqlite3.connect("Datos.db")
     miCursor= miConexion.cursor()
@@ -15,19 +16,31 @@ def conexionBBDD():
     except:
         messagebox.showinfo("CONEXION", "Conexión exitosa con la BBDD")
 
-def eliminarBBDD():
+def eliminar_Tabla():
     miConexion = sqlite3.connect("Datos.db")
     miCursor= miConexion.cursor()
-    if messagebox.askyesno(mensaje= "Los Datos se perderan definitivamente. ¿ Desea continuar ?",title="ADVERTENCIA"):
-        miCursor.execute("DROP TABLE formulario")
+    miCursor.execute("DROP TABLE formulario")
+    messagebox.showinfo("BORRADO EFECTUADO", "La tabla ha sido borrada con éxito")
+    miConexion.close()
 
-def crear(nombre,apellidos,contraseña,direccion,comentarios):
+def eliminar_BBDD():
+    miConexion = sqlite3.connect("Datos.db")
+    miCursor= miConexion.cursor()
+    miCursor.execute("DROP DATEBASE Datos.db")
+    messagebox.showinfo("BORRADO EFECTUADO", "La tabla ha sido borrada con éxito")
+    miConexion.close()
+    
+
+
+def crear(nombre,apellidos,contraseña,direccion,l6):
     miConexion = sqlite3.connect("Datos.db")
     miCursor= miConexion.cursor()
     try:
-        datos_for= nombre.get(),apellidos.get(),contraseña.get(),direccion.get(),comentarios.get()
+        datos_for= nombre.get(),apellidos.get(),contraseña.get(),direccion.get(),l6.get(1.0, "end-1c")
         miCursor.execute("INSERT INTO formulario VALUES(NULL,?,?,?,?,?)",(datos_for))
+        
         miConexion.commit()
+        miConexion.close()
     except:
         messagebox.showinfo("ADVERTENCIA", "Ocurrió un error al crear el registro, verifique la conexión")
-    limpiar_campos(nombre,apellidos,contraseña,direccion,comentarios)
+    limpiar_campos(nombre,apellidos,contraseña,direccion,l6)
