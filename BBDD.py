@@ -44,6 +44,7 @@ def crear(nombre,apellidos,contraseña,direccion,l6):
     except:
         messagebox.showinfo("ADVERTENCIA", "Ocurrió un error al crear el registro, verifique la conexión")
     limpiar_campos(nombre,apellidos,contraseña,direccion,l6)
+    messagebox.showinfo("Registro","Creado registro correctamente")
 
 def leer(id,nombre,apellidos,contraseña,direccion,l6):
     miConexion = sqlite3.connect('Datos.db')
@@ -60,6 +61,7 @@ def leer(id,nombre,apellidos,contraseña,direccion,l6):
         l6.insert(1.0,usuario[5])
     miConexion.commit()
 
+
 def actualizar(id,nombre,apellidos,contraseña,direccion,l6):
     miConexion = sqlite3.connect('Datos.db')
     miCursor = miConexion.cursor()
@@ -72,9 +74,15 @@ def actualizar(id,nombre,apellidos,contraseña,direccion,l6):
     miConexion.commit()
     messagebox.showinfo("BBDD","Registro Actualizado")
 
-def borrar(id):
+def borrar(id,nombre,apellidos,contraseña,direccion,l6):
         miConexion = sqlite3.connect('Datos.db')
         miCursor = miConexion.cursor()
         miCursor.execute("DELETE FROM formulario WHERE ID =" + id.get())
         miConexion.commit()
+        id.set('')
+        nombre.set('')
+        apellidos.set('')
+        contraseña.set('')
+        direccion.set('')
+        l6.delete(1.0, "end-1c")
         messagebox.showinfo("BBDD","Registro Borrado")

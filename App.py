@@ -83,7 +83,7 @@ b2.grid(row=7,column=2)
 b3= Button(lamina,text="Update",command= lambda: actualizar(id,nombre,apellidos,contraseña,direccion,l6))
 b3.grid(row=7,column=3 , padx = 50 , pady = 30)
 
-b4= Button(lamina,text="Delate",command= lambda: borrar(id))
+b4= Button(lamina,text="Delate",command= lambda: borrar(id,nombre,apellidos,contraseña,direccion,l6))
 b4.grid(row=7,column=7,columnspan=2)
 #////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #Menu
@@ -110,7 +110,7 @@ BBDDmenu.add_command(label="SALIR", command = lambda: salir(root))
 CRUDmenu.add_command(label="CREATE",command= lambda: crear(nombre,apellidos,contraseña,direccion,l6))
 CRUDmenu.add_command(label="READ",command= lambda: leer(nombre,apellidos,contraseña,direccion,l6))
 CRUDmenu.add_command(label="UPDATE",command= lambda: actualizar(id,nombre,apellidos,contraseña,direccion,l6))
-CRUDmenu.add_command(label="DELATE",command= lambda: borrar(id))
+CRUDmenu.add_command(label="DELATE",command= lambda: borrar(id,nombre,apellidos,contraseña,direccion,l6))
 
 
 Borrarmenu.add_command(label="Borrar campos de texto",command= lambda: limpiar_campos(nombre,apellidos,contraseña,direccion,comentarios))
