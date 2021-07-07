@@ -1,14 +1,16 @@
+
 from tkinter import Tk, messagebox
-raiz = Tk()
 
-#Quitado
-class Protectora:
-    def __init__(self, ventana):
+root = Tk()
+class Ejemplo:
+    def __init__(self,ventana):
         self.ventana = ventana
-        self.ventana.title("Aplicación en POO ")
-        
-        
+        self.ventana.geometry("800x600")
 
 
-Proyecto = Protectora(raiz)
-raiz.mainloop()
+
+
+
+
+e=Ejemplo(root)      
+root.mainloop()
