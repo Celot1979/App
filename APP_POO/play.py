@@ -12,7 +12,7 @@ class Ejemplo:
         self.ventana.geometry("800x600")
         self.ventana.title("Ejemplo en POO")
 
-         
+
 
 
 
