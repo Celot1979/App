@@ -41,7 +41,7 @@ class lamina:
         self.en2 =tk.Entry(self.Lamina, textvariable= self.apellido)
         self.en2.grid(row=3,column=2)
 
-        self.en3 =tk.Entry(self.Lamina, textvariable= self.contraseña)
+        self.en3 =tk.Entry(self.Lamina, textvariable= self.contraseña, show= "*")
         self.en3.grid(row=4,column=2)
 
         self.en4 =tk.Entry(self.Lamina, textvariable= self.direccion)
