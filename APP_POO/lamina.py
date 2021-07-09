@@ -10,10 +10,10 @@ class lamina:
         #Creacion de Interfaz en Frame en
         #StringVar
         self.id = tk.StringVar()
-        self. nombre= tk.StringVar()
-        self. apellido= tk.StringVar()
-        self. contraseña= tk.StringVar()
-        self. direccion= tk.StringVar()
+        self.nombre= tk.StringVar()
+        self.apellido= tk.StringVar()
+        self.contraseña= tk.StringVar()
+        self.direccion= tk.StringVar()
         self.et0 =tk.Label(self.Lamina, text="ID")
         self.et0.grid(row=1,column=1)
 
@@ -55,9 +55,9 @@ class lamina:
 
         self.b1 = tk.Button(self.Lamina, text="CREATE",command=lambda:crear(self.nombre,self.apellido,self.contraseña,self.direccion,self.l6))
         self.b1.grid(row=7,column=1)
-        self.b2 = tk.Button(self.Lamina, text="READ")
+        self.b2 = tk.Button(self.Lamina, text="READ",command=lambda:leer(self.id,self.nombre,self.apellido,self.contraseña,self.direccion,self.l6))
         self.b2.grid(row=7,column=2)
-        self.b3 = tk.Button(self.Lamina, text="UPDATE")
+        self.b3 = tk.Button(self.Lamina, text="UPDATE",command=lambda:actualizar(self.id,self.nombre,self.apellido,self.contraseña,self.direccion,self.l6))
         self.b3.grid(row=7,column=3)
-        self.b4 = tk.Button(self.Lamina, text="DELATE")
+        self.b4 = tk.Button(self.Lamina, text="DELATE",command=lambda:borrar(self.id,self.nombre,self.apellido,self.contraseña,self.direccion,self.l6))
         self.b4.grid(row=7,column=4)
