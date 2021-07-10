@@ -1,7 +1,7 @@
 
 from tkinter import Tk, messagebox
 import tkinter as tk
-from menu import*
+
 from lamina import *
 
 
@@ -19,5 +19,5 @@ class Ejemplo:
 if __name__ == "__main__":
     e=Ejemplo(root)   #Raiz
     f= lamina(root)   #Frame
-    m = men(root)     #Menu
+    #m = men(root)     #Menu
     root.mainloop()

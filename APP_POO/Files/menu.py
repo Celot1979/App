@@ -4,6 +4,8 @@ from BBDD import *
 from tools import *
 
 
+
+
 class men:
     def __init__(self,ventana):
         self.ventana = ventana
@@ -29,9 +31,7 @@ class men:
         self.BBDDmenu.add_command(label="CREAR BBDD", command =conexionBBDD)
         self.BBDDmenu.add_command(label="Borrar Tabla de BBDD ",command =eliminar_Tabla)
         self.BBDDmenu.add_command(label="SALIR",command=lambda: salir(self))
-
-
-        self.CRUDmenu.add_command(label="CREATE",command=lambda:crear(self.nombre,self.apellido,self.contraseña,self.direccion,self.l6))
+        self.CRUDmenu.add_command(label="CREATE")
         self.CRUDmenu.add_command(label="READ",command=lambda:leer(self.id,self.nombre,self.apellido,self.contraseña,self.direccion,self.l6))
         self.CRUDmenu.add_command(label="UPDATE",command=lambda:actualizar(self.id,self.nombre,self.apellido,self.contraseña,self.direccion,self.l6))
         self.CRUDmenu.add_command(label="DELATE",command=lambda:borrar(self.id,self.nombre,self.apellido,self.contraseña,self.direccion,self.l6))
@@ -44,3 +44,4 @@ class men:
         self.helpmenu.add_command(label="LINCENCIA",command= lincencia)
 
         self.ventana.config(menu=self.menubar, width = 300, height = 300)
+        
